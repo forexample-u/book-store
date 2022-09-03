@@ -33,6 +33,10 @@
     "Permission:Books": "Book Manager",
     "Permission:Books.Create": "Creating the book",
     "Permission:Books.Edit": "Editing the book",
-    "Permission:Books.Delete": "Deleting the book"
+    "Permission:Books.Delete": "Deleting the book",
+    "Permission:Authors": "Author Management",
+    "Permission:Authors.Create": "Creating new authors",
+    "Permission:Authors.Edit": "Editing the authors",
+    "Permission:Authors.Delete": "Deleting the authors"
   }
 }
