@@ -34,6 +34,21 @@ public class BookStoreMenuContributor : IMenuContributor
             )
         );
 
+
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                BookStoreMenus.Index,
+                l["Menu:BookStore"],
+                icon: "fa fa-book"
+            ).AddItem(
+                new ApplicationMenuItem(
+                    BookStoreMenus.Books,
+                    l["Menu:Books"],
+                    url: "/Books"
+                )
+            )
+        );
+
         if (MultiTenancyConsts.IsEnabled)
         {
             administration.SetSubItemOrder(TenantManagementMenuNames.GroupName, 1);
