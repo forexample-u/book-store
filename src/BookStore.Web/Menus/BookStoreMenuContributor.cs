@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BookStore.Localization;
 using BookStore.MultiTenancy;
+using BookStore.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TenantManagement.Web.Navigation;
@@ -34,20 +35,17 @@ public class BookStoreMenuContributor : IMenuContributor
             )
         );
 
+        //context.Menu
+        //    .AddItem(new ApplicationMenuItem("BooksStore", l["Menu:BookStore"], icon: "fa fa-book")
+        //    .AddItem(new ApplicationMenuItem("BooksStore.Books", l["Menu:Books"],url: "/Books")));
 
-        context.Menu.AddItem(
-            new ApplicationMenuItem(
-                BookStoreMenus.Index,
-                l["Menu:BookStore"],
-                icon: "fa fa-book"
-            ).AddItem(
-                new ApplicationMenuItem(
-                    BookStoreMenus.Books,
-                    l["Menu:Books"],
-                    url: "/Books"
-                )
-            )
-        );
+        var bookStoreMenu = new ApplicationMenuItem("BooksStore", l["Menu:BookStore"], icon: "fa fa-book");
+        context.Menu.AddItem(bookStoreMenu);
+        if (await context.IsGrantedAsync(BookStorePermissions.Books.Default))
+        {
+            bookStoreMenu.AddItem(new ApplicationMenuItem("BooksStore.Books", l["Menu:Books"], url: "/Books"));
+        }
+
 
         if (MultiTenancyConsts.IsEnabled)
         {
