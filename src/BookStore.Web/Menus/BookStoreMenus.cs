@@ -3,8 +3,7 @@
 public class BookStoreMenus
 {
     private const string Prefix = "BookStore";
+    public const string Index = Prefix;
     public const string Home = Prefix + ".Home";
-
-    //Add your menu items here...
-
+    public const string Books = Prefix + ".Books";
 }
